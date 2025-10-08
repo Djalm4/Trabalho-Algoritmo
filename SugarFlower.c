@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <string.h> //Para poder usar o strcmp
 
+void Tabela(){
+    printf("\n\t|----------------------------------------------------|\n");
+    printf("\t|%-12s |%-12s |%-10s|%-10s|\n", "Tipo Doce", "Doce", "Ate 5Kg", "Acima de 5 KG");
+    printf("\t|-------------|-------------|----------|-------------|\n");
+    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 1, "Trufa Choc", 30.00, 32.00);
+    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 2, "Torta Limao", 34.45, 32.25);
+    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 3, "Bolo Brig", 45.00, 40.00);
+    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 4, "Bolo Nutella", 48.50, 46.20);
+    printf("\t|----------------------------------------------------|\n\n");
+}
+
 const char *EscolhaDoce(){
     
     int escolha;
@@ -42,7 +53,7 @@ float CalCompra(){
     if (strcmp(doce, "Trufa Choc") == 0) { //strcmp Função usada para comparar Strings, Pertence a biblioteca string.h
         
         if(quant <= 5.00){
-            compra = quant * 35.00;
+            compra = quant * 30.00;
             return compra;    
         }
         else{
@@ -90,18 +101,12 @@ float CalCompra(){
     return compra;
 }
 
+//Criar uma função para mostrar os dados da compra
+
 int main(){
 
-    printf("\n\t|----------------------------------------------------|\n");
-    printf("\t|%-12s |%-12s |%-10s|%-10s|\n", "Tipo Doce", "Doce", "Ate 5Kg", "Acima de 5 KG");
-    printf("\t|-------------|-------------|----------|-------------|\n");
-    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 1, "Trufa Choc", 30.00, 32.00);
-    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 2, "Torta Limao", 34.45, 32.25);
-    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 3, "Bolo Brig", 45.00, 40.00);
-    printf("\t|%-12d |%-12s |R$%-.2f KG| R$%-.2f KG  |\n", 4, "Bolo Nutella", 48.50, 46.20);
-    printf("\t|----------------------------------------------------|\n\n");
-
-    float valor = CalCompra();
+    Tabela();
+    float valor = CalCompra(); 
 
     printf("\nO total da sua compra foi de R$%.2f", valor);
 
