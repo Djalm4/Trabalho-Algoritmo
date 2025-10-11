@@ -42,73 +42,79 @@ const char *EscolhaDoce(){
     }
 }
 
-float CalCompra(){
-
-    const char *doce = EscolhaDoce();
-    float quant ,compra = 0;
-
-    printf("\nQuantos kilos de %s voce quer: ", doce);
-    scanf("%f", &quant);
+float CalCompra(const char *doce, float quant){
 
     if (strcmp(doce, "Trufa Choc") == 0) { //strcmp Função usada para comparar Strings, Pertence a biblioteca string.h
         
         if(quant <= 5.00){
-            compra = quant * 30.00;
-            return compra;    
+            return quant = quant * 30.00;    
         }
         else{
-            compra = quant * 32.00; 
-            return compra; 
+            return quant = quant * 32.00; 
         }
     }
 
     else if(strcmp(doce, "Torta Limao") == 0){
 
         if(quant <= 5){
-            compra = quant * 34.45;
-            return compra;
+            return quant = quant * 34.45;
         }
         else{
-            compra = quant * 32.25;
-            return compra;
+            return quant = quant * 32.25;
         }
     }
 
     else if(strcmp(doce, "Bolo Brig") == 0){
 
         if(quant <= 5){
-            compra = quant * 45.00;
-            return compra;
+            return quant = quant * 45.00;
         }
         else{
-            compra = quant * 40.00;
-            return compra;
+            return quant = quant * 40.00;
         }
     }
 
     else if(strcmp(doce, "Bolo Nutella") == 0){
 
         if(quant <= 5){
-            compra = quant * 48.50;
-            return compra;
+            return quant = quant * 48.50;
         }
         else{
-            compra = quant * 46.20;
-            return compra;
+            return quant = quant * 46.20;
         }
     }
 
-    return compra;
+    else
+        return 0;
 }
 
-//Criar uma função para mostrar os dados da compra
+void Dados(char nome[], const char *doce, float quant, float total){
+    printf("\n------------------ DADOS COMPRA ------------------\n");
+    printf("Cliente: %s\n", nome);
+    printf("Doce: %s\n", doce);
+    printf("Quantidade: %.2f Kg\n", quant);
+    printf("Total pago: R$ %.2f\n", total);
+    printf("---------------------------------------------------\n");
+}
 
 int main(){
 
-    Tabela();
-    float valor = CalCompra(); 
+    char nome[67];
+    float quant, total;
+    const char *doce;
 
-    printf("\nO total da sua compra foi de R$%.2f", valor);
+    printf("Qual o nome do cliente: ");
+    scanf("%[^\n]", nome); //Le até a quebra de linha
+
+    Tabela();
+    doce = EscolhaDoce();
+
+    printf("\nQuantos kilos de doce voce quer: ");
+    scanf("%f", &quant);
+
+    total = CalCompra(doce, quant);
+
+    Dados(nome, doce, quant, total);
 
     return 0;
 }
